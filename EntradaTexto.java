@@ -22,6 +22,7 @@ public class EntradaTexto
     {
         usuario = autor;
         mensaje = texto;
+        momentoPublicacion = LocalDateTime.now();
     }
 
     public void meGusta()
