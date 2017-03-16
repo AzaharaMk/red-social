@@ -1,38 +1,13 @@
-import java.util.*;
 import java.time.*;
-/**
- * Write a description of class EntradaTexto here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class EntradaTexto
+import java.time.temporal.ChronoUnit;
+public class EntradaTexto extends Entrada
 {
-    // instance variables - replace the example below with your own
-    private String usuario;
     private String mensaje;
-    private LocalDateTime momentoPublicacion;
-    private int cantidadMeGusta;
-    private ArrayList<String> comentarios;
-
-    /**
-     * Constructor for objects of class EntradaTexto
-     */
-    public EntradaTexto(String autor,String texto)
+    
+    public EntradaTexto (String autor,String texto)
     {
-        usuario = autor;
+        super(autor);
         mensaje = texto;
-        momentoPublicacion = LocalDateTime.now();
-    }
-
-    public void meGusta()
-    {
-
-    }
-
-    public void addCmentarios(String text)
-    {
-        comentarios.add(text);
     }
 
     public String getMensaje()
@@ -40,32 +15,37 @@ public class EntradaTexto
         return mensaje;
     }
 
-    public LocalDateTime getMomentoPublicacion()
-    {
-        return momentoPublicacion;
-    }
-
     public String toString()
     {
         String textoADevolver = "";
-       	LocalTime horaActual = LocalTime.now();
-		int minutosActuales = horaActual.getMinute();
-		int segundosActuales = horaActual.getSecond();
-		int minutosPublicacion = momentoPublicacion.getMinute();
-		int segundosPublicacion = momentoPublicacion.getSecond();
-		int tiempoFinalMinutos = minutosActuales -minutosPublicacion;
-		int tiempoFinalSegundos = segundosActuales - segundosPublicacion;
-		String momentoFinal= Integer.toString(tiempoFinalSegundos);
 
-        if (comentarios == null){
-            textoADevolver ="La entrada no tiene comentarios";
+        textoADevolver += "Usuario: "+getUsuario()+"\n"; 
+        textoADevolver += "Mensaje: "+mensaje+ "\n";
+        textoADevolver += "Cantidad Me Gusta: "+getCantidadMeGusta()+ "\n";
+        textoADevolver += "Comentarios: " +getComentarios();
+        //Calculamos los segundos y minutos que han pasado
+        long segundosQueHanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(),ChronoUnit.SECONDS);
+        long minutosQueHanPasadoDesdeCreacion = segundosQueHanPasadoDesdeCreacion / 60;
+        long segundosResiduales = segundosQueHanPasadoDesdeCreacion % 60;
+        
+        textoADevolver += "Hace ";
+        if(minutosQueHanPasadoDesdeCreacion > 0 ){
+            textoADevolver += minutosQueHanPasadoDesdeCreacion+ " minutos";
+        }
+        textoADevolver+= segundosResiduales + " segundos \n";
+        //comprobamos si el arraylist está vacío
+        if (getComentarios().isEmpty()){
+            textoADevolver += "La entrada no tiene comentarios.";
         }
         else{
-            textoADevolver ="Usuario: "+usuario+ " Mensaje: "+mensaje+ " Momento Publicacion: "+momentoFinal+ 
-            " Cantidad Me Gusta: "+cantidadMeGusta+ "Comentarios: " +comentarios;
+            textoADevolver += "Comentarios:";
+            //guardamos los comentarios
+            for(String comentario : getComentarios()){
+                textoADevolver += comentario + "\n";
+            }
         }
-        System.out.println(horaActual);
         return textoADevolver;
-    }	
+    }
 
-}
+}   
+

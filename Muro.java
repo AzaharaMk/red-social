@@ -7,7 +7,8 @@ public class Muro
 
     public Muro()
     {
-        
+        mensajes = new ArrayList<>();
+        fotos = new ArrayList<>();
     }
 
     public void addEntradaTexto(EntradaTexto entradaTexto)
@@ -22,6 +23,23 @@ public class Muro
     
     public String toString()
     {
-        return "";
+        String cadenaAdevolver = "";
+        
+        //bucle que recorra los elementos de post
+        for (EntradaTexto entrada : mensajes){
+            cadenaAdevolver += entrada+ "\n";
+        }
+        
+        //bucle que recorra los elementos de imagen
+        for (EntradaFoto entrada : fotos){
+            cadenaAdevolver += entrada + "\n";
+        }
+        
+        return cadenaAdevolver;
+    }
+    
+    public void mostrar()
+    {
+        System.out.println(this);
     }
 }

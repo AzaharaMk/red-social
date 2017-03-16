@@ -1,63 +1,58 @@
 import java.time.*;
-import java.util.ArrayList;
+import java.time.temporal.ChronoUnit;
 
-public class EntradaFoto
+public class EntradaFoto extends Entrada
 {
-    private String usuario;
-    private String urlImagen;
+    private String urlimagen;
     private String titulo;
-    private LocalDateTime momentoPublicacion;
-    private int cantidadMeGusta;
-    private ArrayList<String> comentarios;
-
-    /**
-     * Constructor for objects of class EntradaFoto
-     */
-    public EntradaFoto(String autor, String url,String titulo)
+    
+    public EntradaFoto(String autor,String url,String titulo)
     {
-       usuario = autor;
-       urlImagen = url;
-       this.titulo = titulo;
+        super(autor);
+        urlimagen = url;
+        this.titulo = titulo;
     }
 
-    public void meGusta()
-    {
-        
-    }
-    
-    public void unLike()
-    {
-    }
-    
-    public void addComentario(String text)
-    {
-       comentarios.add(text); 
-    }
-    
     public String getUrlImagen()
     {
-        return urlImagen;
+        return urlimagen;
     }
-    
+
     public String getTituloImagen()
     {
         return titulo;
     }
-    
-    public LocalDateTime getMomentoPublicacion()
-    {
-        return momentoPublicacion;
-    }
-    
+
     public String toString()
     {
-        String textoADevolver="";
-        if (comentarios == null){
-            textoADevolver ="La entrada no tiene comentarios";
+        String textoADevolver = "";
+
+        textoADevolver += "Usuario: "+getUsuario()+"\n"; 
+        textoADevolver += "Título imágen: "+titulo+ "\n";
+        textoADevolver += "URL imágen: "+urlimagen+ "\n";
+        textoADevolver += "Cantidad Me Gusta: "+getCantidadMeGusta()+ "\n";
+        textoADevolver += "Comentarios: " +getComentarios();
+        //Calculamos los segundos y minutos que han pasado
+        long segundosQueHanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(),ChronoUnit.SECONDS);
+        long minutosQueHanPasadoDesdeCreacion = segundosQueHanPasadoDesdeCreacion / 60;
+        long segundosResiduales = segundosQueHanPasadoDesdeCreacion % 60;
+
+        textoADevolver += "Hace ";
+        if(minutosQueHanPasadoDesdeCreacion > 0 ){
+            textoADevolver += minutosQueHanPasadoDesdeCreacion+ " minutos";
+        }
+        textoADevolver+= segundosResiduales + " segundos \n";
+
+        //comprobamos si el arraylist está vacío
+        if (getComentarios().isEmpty()){
+            textoADevolver += "La entrada no tiene comentarios.";
         }
         else{
-            textoADevolver ="Usuario: "+usuario+ " Imágen: "+urlImagen+ " Título: "+titulo+ 
-            " Momento publicación: "+momentoPublicacion+  " Cantidad me gusta: "+cantidadMeGusta+"Comentarios: " +comentarios;
+            textoADevolver += "Comentarios:";
+            //guardamos los comentarios
+            for(String comentario : getComentarios()){
+                textoADevolver += comentario + "\n";
+            }
         }
         return textoADevolver;
     }
