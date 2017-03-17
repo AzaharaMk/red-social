@@ -1,55 +1,49 @@
 import java.time.*;
-import java.util.ArrayList;
 public class Entrada
 {
-   private String usuario;
-   private LocalDateTime momentoPublicacion;
-   private int cantidadMeGusta;
-   private ArrayList<String> comentarios;
+    private String usuario;
+    private LocalDateTime momentoPublicacion;
+    private int cantidadMeGusta;
 
-    /**
-     * Constructor for objects of class Entrada
-     */
     public Entrada(String autor)
     {
-       usuario = autor;
-       comentarios = new ArrayList<>();
-       momentoPublicacion = LocalDateTime.now();
-       cantidadMeGusta = 0;
+        usuario = autor;
+        momentoPublicacion = LocalDateTime.now();
+        cantidadMeGusta = 0;
     }
 
+    //Aumenta la cantidad de me gusta.
     public void meGusta()
     {
         cantidadMeGusta++;
     }
-    
-     public void addCmentarios(String text)
-    {
-        comentarios.add(text);
-    }
-    
-     public LocalDateTime getMomentoPublicacion()
+
+    //devuelve la fecha del momento de la publicacion.
+    public LocalDateTime getMomentoPublicacion()
     {
         return momentoPublicacion;
     }
-    
+
+    //Devuelve el nombre de usuario.
     public String getUsuario()
     {
         return usuario;
     }
-    
-     public int getCantidadMeGusta()
+
+    //Devuelve la cantidad de me gusta.
+    public int getCantidadMeGusta()
     {
         return cantidadMeGusta;
     }
-    
-    public ArrayList <String> getComentarios()
-    {
-        return comentarios;
-    }
+
     
     public String toString()
     {
         return "";
     }
+    
+    public void mostrar()
+    {
+    }
+    
 }

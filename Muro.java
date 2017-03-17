@@ -2,23 +2,16 @@ import java.util.ArrayList;
 
 public class Muro
 {
-    private ArrayList <EntradaTexto> mensajes;
-    private ArrayList <EntradaFoto> fotos;
-
+    private ArrayList <Entrada> entrada;
+    
     public Muro()
     {
-        mensajes = new ArrayList<>();
-        fotos = new ArrayList<>();
+        entrada = new ArrayList<>();
     }
-
-    public void addEntradaTexto(EntradaTexto entradaTexto)
+   
+    public void addEntrada(Entrada nuevaEntrada)
     {
-        mensajes.add(entradaTexto);
-    }
-    
-    public void addEntradaFoto(EntradaFoto entradaFoto)
-    {
-        fotos.add(entradaFoto);
+        entrada.add(nuevaEntrada);
     }
     
     public String toString()
@@ -26,15 +19,10 @@ public class Muro
         String cadenaAdevolver = "";
         
         //bucle que recorra los elementos de post
-        for (EntradaTexto entrada : mensajes){
-            cadenaAdevolver += entrada+ "\n";
+        for (Entrada nuevaEntrada : entrada){
+            cadenaAdevolver += nuevaEntrada+ "\n";
         }
-        
-        //bucle que recorra los elementos de imagen
-        for (EntradaFoto entrada : fotos){
-            cadenaAdevolver += entrada + "\n";
-        }
-        
+   
         return cadenaAdevolver;
     }
     

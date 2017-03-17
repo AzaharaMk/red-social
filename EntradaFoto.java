@@ -1,7 +1,7 @@
 import java.time.*;
 import java.time.temporal.ChronoUnit;
 
-public class EntradaFoto extends Entrada
+public class EntradaFoto extends EntradaComentarios
 {
     private String urlimagen;
     private String titulo;
@@ -55,5 +55,10 @@ public class EntradaFoto extends Entrada
             }
         }
         return textoADevolver;
+    }
+    
+    public void mostrar()
+    {
+        System.out.println(this);
     }
 }

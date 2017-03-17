@@ -1,6 +1,7 @@
 import java.time.*;
 import java.time.temporal.ChronoUnit;
-public class EntradaTexto extends Entrada
+
+public class EntradaTexto extends EntradaComentarios
 {
     private String mensaje;
     
@@ -9,7 +10,8 @@ public class EntradaTexto extends Entrada
         super(autor);
         mensaje = texto;
     }
-
+    
+    //Devuelve el contenido del mensaje.
     public String getMensaje()
     {
         return mensaje;
@@ -45,6 +47,19 @@ public class EntradaTexto extends Entrada
             }
         }
         return textoADevolver;
+    }
+    
+    public void mostrarAutorYMensaje()
+    {
+        String autorMensaje = "";
+        autorMensaje += "Autor: "+getUsuario()+"\n";
+        autorMensaje += "Mensaje: "+mensaje+" \n";
+        System.out.println(autorMensaje);
+    }
+    
+    public void mostrar()
+    {
+        System.out.println(this);
     }
 
 }   
