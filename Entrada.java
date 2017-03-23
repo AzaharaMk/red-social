@@ -1,4 +1,5 @@
 import java.time.*;
+import java.time.temporal.ChronoUnit;
 public class Entrada
 {
     private String usuario;
@@ -39,11 +40,34 @@ public class Entrada
     
     public String toString()
     {
-        return "";
+        String textoADevolver = "";
+        textoADevolver += "Usuario: "+getUsuario()+"\n";
+        
+        //Calculamos los segundos y minutos que han pasado
+        long segundosQueHanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(),ChronoUnit.SECONDS);
+        long minutosQueHanPasadoDesdeCreacion = segundosQueHanPasadoDesdeCreacion / 60;
+        long segundosResiduales = segundosQueHanPasadoDesdeCreacion % 60;
+
+        textoADevolver += "Hace ";
+        if(minutosQueHanPasadoDesdeCreacion > 0 ){
+            textoADevolver += minutosQueHanPasadoDesdeCreacion+ " minutos";
+        }
+       
+        textoADevolver+= segundosResiduales + " segundos \n";
+        textoADevolver += getCantidadMeGusta()+ " me gusta.\n";
+        
+        return textoADevolver;
     }
     
     public void mostrar()
     {
     }
+    
+    public int getCantidadDeDatosAsociadosALaEntrada()
+    {
+        return 0;
+    }
+    
+
     
 }

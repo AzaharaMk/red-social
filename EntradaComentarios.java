@@ -20,4 +20,24 @@ public class EntradaComentarios extends Entrada
     {
         return comentarios;
     }
+    
+    public String toString()
+    {
+        String textoADevolver = "";
+        //Invocamos el toString de la clase padre y lo gaurdamos en nuestra variable.
+        textoADevolver += super.toString();
+        
+        //comprobamos si el arraylist está vacío
+        if (getComentarios().isEmpty()){
+            textoADevolver += "La entrada no tiene comentarios.\n";
+        }
+        else{
+            textoADevolver += "Comentarios:\n";
+            //guardamos los comentarios
+            for(String comentario : getComentarios()){
+                textoADevolver += comentario + "\n";
+            }
+        }
+        return textoADevolver;
+    }
 }

@@ -26,39 +26,30 @@ public class EntradaFoto extends EntradaComentarios
     public String toString()
     {
         String textoADevolver = "";
-
-        textoADevolver += "Usuario: "+getUsuario()+"\n"; 
+        
+        //Invocamos a toString de la clase padre y se guarda en la variable local.
+        textoADevolver += super.toString();
         textoADevolver += "Título imágen: "+titulo+ "\n";
         textoADevolver += "URL imágen: "+urlimagen+ "\n";
-        textoADevolver += "Cantidad Me Gusta: "+getCantidadMeGusta()+ "\n";
-        textoADevolver += "Comentarios: " +getComentarios();
-        //Calculamos los segundos y minutos que han pasado
-        long segundosQueHanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(),ChronoUnit.SECONDS);
-        long minutosQueHanPasadoDesdeCreacion = segundosQueHanPasadoDesdeCreacion / 60;
-        long segundosResiduales = segundosQueHanPasadoDesdeCreacion % 60;
 
-        textoADevolver += "Hace ";
-        if(minutosQueHanPasadoDesdeCreacion > 0 ){
-            textoADevolver += minutosQueHanPasadoDesdeCreacion+ " minutos";
-        }
-        textoADevolver+= segundosResiduales + " segundos \n";
-
-        //comprobamos si el arraylist está vacío
-        if (getComentarios().isEmpty()){
-            textoADevolver += "La entrada no tiene comentarios.";
-        }
-        else{
-            textoADevolver += "Comentarios:";
-            //guardamos los comentarios
-            for(String comentario : getComentarios()){
-                textoADevolver += comentario + "\n";
-            }
-        }
         return textoADevolver;
     }
     
     public void mostrar()
     {
         System.out.println(this);
+    }
+    
+    public int getCantidadDeDatosAsociadosALaEntrada()
+    {
+        return 6;
+    }
+    
+    public void mostrarDatosExclusivos()
+    {
+        String url = getUrlImagen();
+        String tituloImagen = getTituloImagen();
+        
+        System.out.println(url+"\n" +tituloImagen);
     }
 }
