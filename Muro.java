@@ -55,7 +55,7 @@ public class Muro
             if(entradaActual.getClass().getSimpleName().equals(tipoEntrada) ||tipoEntrada == null )
             {
                 //Comprobamos el autor
-                if (autor.equals(entradaActual.getUsuario()) ||tipoEntrada == null )
+                if (entradaActual.getUsuario().equals(autor) ||autor == null )
                 {
                     //comprobamos de que tipo es la entradaActual
                     if(entradaActual instanceof EntradaTexto)
