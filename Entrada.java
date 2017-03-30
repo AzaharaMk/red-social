@@ -41,7 +41,7 @@ public class Entrada
     public String toString()
     {
         String textoADevolver = "";
-        textoADevolver += "Usuario: "+getUsuario()+"\n";
+        textoADevolver += "<h2>" +getUsuario()+ "</h2>";
         
         //Calculamos los segundos y minutos que han pasado
         long segundosQueHanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(),ChronoUnit.SECONDS);
@@ -49,12 +49,13 @@ public class Entrada
         long segundosResiduales = segundosQueHanPasadoDesdeCreacion % 60;
 
         textoADevolver += "Hace ";
-        if(minutosQueHanPasadoDesdeCreacion > 0 ){
+        if(minutosQueHanPasadoDesdeCreacion > 0 )
+        {
             textoADevolver += minutosQueHanPasadoDesdeCreacion+ " minutos";
         }
        
-        textoADevolver+= segundosResiduales + " segundos \n";
-        textoADevolver += getCantidadMeGusta()+ " me gusta.\n";
+        textoADevolver+= segundosResiduales + " segundos <br/>";
+        textoADevolver += getCantidadMeGusta()+ " me gusta.<br/>";
         
         return textoADevolver;
     }

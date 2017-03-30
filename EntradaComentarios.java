@@ -28,14 +28,17 @@ public class EntradaComentarios extends Entrada
         textoADevolver += super.toString();
         
         //comprobamos si el arraylist está vacío
-        if (getComentarios().isEmpty()){
-            textoADevolver += "La entrada no tiene comentarios.\n";
+        if (getComentarios().isEmpty())
+        {
+            textoADevolver += "La entrada no tiene comentarios. <br/>";
         }
-        else{
-            textoADevolver += "Comentarios:\n";
+        else
+        {
+            textoADevolver += "<b>Comentarios:</b> <br/>";
             //guardamos los comentarios
-            for(String comentario : getComentarios()){
-                textoADevolver += comentario + "\n";
+            for(String comentario : getComentarios())
+            {
+                textoADevolver += comentario + "<br/>";
             }
         }
         return textoADevolver;

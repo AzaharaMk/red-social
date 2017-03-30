@@ -17,7 +17,7 @@ public class EntradaUnionGrupo extends Entrada
         //invocamos el toString de la clase padre y lo guardamos en nuestra variable local.
         textoADevolver += super.toString();
         
-        textoADevolver +="Se ha unido al grupo " +grupo+ "\n";
+        textoADevolver +="Se ha unido al grupo " +grupo;
         return textoADevolver;
     }
     

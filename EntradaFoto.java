@@ -29,9 +29,8 @@ public class EntradaFoto extends EntradaComentarios
         
         //Invocamos a toString de la clase padre y se guarda en la variable local.
         textoADevolver += super.toString();
-        textoADevolver += "Título imágen: "+titulo+ "\n";
-        textoADevolver += "URL imágen: "+urlimagen+ "\n";
-
+        textoADevolver += "<b>Titulo imagen:</b>" +titulo+ "<br/>";
+        textoADevolver += "<b>Imagen:</b><br/>"+ "<img src=\""+urlimagen+"\"/>";
         return textoADevolver;
     }
     

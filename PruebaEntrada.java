@@ -29,6 +29,14 @@ public class PruebaEntrada
     
     
 
+    
+    
+    
+    
+    
+    
+    
+
     /**
      * Default constructor for test class PruebaEntrada
      */
@@ -45,10 +53,10 @@ public class PruebaEntrada
     public void setUp()
     {
         entradaT1 = new EntradaTexto("Azahara", "hola a todos");
-        entradaF1 = new EntradaFoto("Azahara", "http://sadsad", "foto Azahara");
+        entradaF1 = new EntradaFoto("Azahara", "http://imagenesdefrasesbonitas.com/wp-content/uploads/2016/09/imagenes-bonitas-para-facebook-perfil-640x350.jpg", "foto Azahara");
         entradaU1 = new EntradaUnionGrupo("Azahara", "DAM1");
         entradaT2 = new EntradaTexto("usuario1", "soy usuario1");
-        entradaF2 = new EntradaFoto("usuario1", "http://usu1", "foto usuario 1");
+        entradaF2 = new EntradaFoto("usuario1", "http://imagenpng.com/wp-content/uploads/2015/09/imagenes-png-635x508.png", "foto usuario 1");
         entradaU2 = new EntradaUnionGrupo("usuario 1", "ASIR1");
         muro1 = new Muro();
         muro1.addEntrada(entradaT1);
@@ -57,6 +65,11 @@ public class PruebaEntrada
         muro1.addEntrada(entradaT2);
         muro1.addEntrada(entradaF2);
         muro1.addEntrada(entradaU2);
+        entradaF1.addCmentarios("me gusta la foto¡");
+        entradaF2.getComentarios();
+        entradaF2.addCmentarios("esa foto es muy chula");
+        entradaF2.addCmentarios("no me gusta mucho...");
+        muro1.mostrarMuroEnNavegado();
     }
 
     /**

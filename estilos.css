@@ -1,0 +1,28 @@
+*{
+	
+	pading: 0px;
+	text-align: justify;
+}
+
+body {
+	background-color: #7BEFC4;
+	font-family: Arial;
+}
+
+h1{
+	font-family: Times New Roman;
+	color: #82068D;
+	text-align: center;
+}
+
+h2{
+	font-family: tahomac;
+	color: #F8E0F7;
+	text-align: justify;
+	background-color:#4C0B5F;
+}
+
+img{
+	width: 250px; height: 200px;
+}
+

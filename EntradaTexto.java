@@ -24,7 +24,7 @@ public class EntradaTexto extends EntradaComentarios
         //Invocamos a la clase padre toString y se gaurda en la variable local.
         textoADevolver+= super.toString();
         
-        textoADevolver += "Mensaje: "+mensaje+ "\n";
+        textoADevolver += "<b>Mensaje:</b></br>"+mensaje;
      
         return textoADevolver;
     }
@@ -49,7 +49,6 @@ public class EntradaTexto extends EntradaComentarios
     
     public void mostrarDatosExclusivos()
     {
-       String mensaje = getMensaje() ;
        System.out.println (mensaje);
     }
 
