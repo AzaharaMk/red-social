@@ -1,6 +1,6 @@
 import java.time.*;
 import java.time.temporal.ChronoUnit;
-public class Entrada
+public abstract class Entrada
 {
     private String usuario;
     private LocalDateTime momentoPublicacion;
@@ -60,14 +60,10 @@ public class Entrada
         return textoADevolver;
     }
     
-    public void mostrar()
-    {
-    }
+    public abstract void mostrar();
     
-    public int getCantidadDeDatosAsociadosALaEntrada()
-    {
-        return 0;
-    }
+    public abstract int getCantidadDeDatosAsociadosALaEntrada();
+    
     
 
     

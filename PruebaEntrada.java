@@ -69,7 +69,6 @@ public class PruebaEntrada
         entradaF2.getComentarios();
         entradaF2.addCmentarios("esa foto es muy chula");
         entradaF2.addCmentarios("no me gusta mucho...");
-        muro1.mostrarMuroEnNavegado();
     }
 
     /**

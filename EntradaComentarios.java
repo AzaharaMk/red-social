@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-public class EntradaComentarios extends Entrada
+public abstract class EntradaComentarios extends Entrada
 {
     private ArrayList<String> comentarios;
     

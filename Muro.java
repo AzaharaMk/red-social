@@ -96,19 +96,19 @@ public class Muro
         try  
         {
             BufferedWriter archivo = Files.newBufferedWriter(rutaArchivo);
-           archivo.write("<html>");
+            archivo.write("<html>");
             archivo.write("<head>");
-                archivo.write("<link rel=\"STYLESHEET\" type=\"text/css\" href=\"estilos.css\">" );
+            archivo.write("<link rel=\"STYLESHEET\" type=\"text/css\" href=\"estilos.css\">" );
             archivo.write("</head>");
-                archivo.write("<body>");
-                    archivo.write("<h1>Red social de Azahara</h1>");
-     
+            archivo.write("<body>");
+            archivo.write("<h1>Red social de Azahara</h1>");
+
             for (int i =0; i<entrada.size();i++)
             {
                 archivo.write(entrada.get(i) +"<br />");
             }
             archivo.write("</body>");
-           archivo.write("</html>");
+            archivo.write("</html>");
             archivo.close();
         }
         catch (IOException excepcion) 
@@ -116,7 +116,7 @@ public class Muro
             // Mostramos por pantalla la excepción que se ha producido
             System.out.println(excepcion.toString());
         }
-        
+
         //Hacemos que la página HTML se abra automáticamente en el navegador en cuanto invoquemos el método
         try 
         {
@@ -125,7 +125,7 @@ public class Muro
         } 
         catch (IOException ioe) 
         {
-          System.out.println (ioe);
+            System.out.println (ioe);
         }
     }
 }
