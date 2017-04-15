@@ -24,7 +24,13 @@ public abstract class Entrada
     {
         return momentoPublicacion;
     }
-
+    
+    //Añade el momento en el que se ha creado la publicación
+    public void añadirMomentoPublicacion(LocalDateTime momentoLeido)
+    {
+        momentoPublicacion = momentoLeido;
+    }
+    
     //Devuelve el nombre de usuario.
     public String getUsuario()
     {
@@ -47,11 +53,18 @@ public abstract class Entrada
         long segundosQueHanPasadoDesdeCreacion = getMomentoPublicacion().until(LocalDateTime.now(),ChronoUnit.SECONDS);
         long minutosQueHanPasadoDesdeCreacion = segundosQueHanPasadoDesdeCreacion / 60;
         long segundosResiduales = segundosQueHanPasadoDesdeCreacion % 60;
+        long horasQueHanPasadoDesdeCreacion = minutosQueHanPasadoDesdeCreacion / 60;
+        long diasQueHanPasadoDesdeCreacion = horasQueHanPasadoDesdeCreacion / 24;
 
         textoADevolver += "Hace ";
         if(minutosQueHanPasadoDesdeCreacion > 0 )
         {
-            textoADevolver += minutosQueHanPasadoDesdeCreacion+ " minutos";
+            if(diasQueHanPasadoDesdeCreacion>=1){
+                textoADevolver += diasQueHanPasadoDesdeCreacion+ " días";
+            }
+            else if (minutosQueHanPasadoDesdeCreacion > 1440 && minutosQueHanPasadoDesdeCreacion > 0){
+                textoADevolver += diasQueHanPasadoDesdeCreacion+ " minutos";
+            }
         }
        
         textoADevolver+= segundosResiduales + " segundos <br/>";
