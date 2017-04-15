@@ -1,13 +1,14 @@
-import java.util.ArrayList;
+import java.util.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.io.BufferedWriter;
 import java.nio.file.Files;
-import java.io.IOException;
+import java.net.URL;
+import java.io.*;
+import java.time.LocalDateTime;
 public class Muro
 {
     private ArrayList <Entrada> entrada;
-
+    
     public Muro()
     {
         entrada = new ArrayList<>();
@@ -127,6 +128,115 @@ public class Muro
         {
             System.out.println (ioe);
         }
+    }
+    
+     public void mostrarMuroEnNavegador2(String usuario)
+    {
+       //guardamos la url y leemos el documento con el nombre de usuario.
+      try {
+            URL url = new URL("https://script.google.com/macros/s/AKfycbzHc3p1twTfyF7o0_cxSwnxSsyOemuHnSu406ly9DZIf5Ck2BA/exec?user="+usuario);
+            Scanner sc = new Scanner(url.openStream());
+            while (sc.hasNextLine()) {
+               //guardas linea actual en una variable de String
+                String lineaLeida= sc.nextLine();
+               //cortas las lineas que van separadas por ;
+                String[] muroNavegador=lineaLeida.split(";");
+               
+                //Creamos el objeto correspondiente a la entrada
+                if (muroNavegador[0].equals("EntradaFoto")){
+                     EntradaFoto entradaFoto = new EntradaFoto(muroNavegador[1],muroNavegador[4], muroNavegador[5]);
+                     this.entrada.add(entradaFoto);
+                     
+                     int cont = 0;
+                     while(cont<Integer.parseInt(muroNavegador[2])){
+                       entradaFoto.meGusta();
+                       cont++;
+                     }
+                     
+                     cont = 0;
+                     muroNavegador[3] = muroNavegador[3].replace("-","/");
+                     muroNavegador[3] = muroNavegador[3].replace(":","/");
+                     
+                     String fechaYHora[] = muroNavegador[3].split("/");
+                     int[] elementosFechaHora = new int[5];
+                     while(cont < 5){
+                         elementosFechaHora[cont] = Integer.parseInt(fechaYHora[cont]);
+                         cont++;
+                     }
+                     LocalDateTime momentoLeido = LocalDateTime.of(elementosFechaHora[2], elementosFechaHora[1], elementosFechaHora[0], elementosFechaHora[3], elementosFechaHora[4]);
+                     entradaFoto.añadirMomentoPublicacion(momentoLeido);
+                     
+                     if(!muroNavegador[6].equals("Sin comentarios")){
+                         String comentarios[] = muroNavegador[6].split("%");
+                         
+                         cont = 0;
+                         while(cont<comentarios.length){
+                             entradaFoto.addComentarios(comentarios[cont]);
+                             cont++;
+                         }
+                     }
+                 }
+                 else if (muroNavegador[0].equals("EntradaTexto")) {
+                     EntradaTexto entradaTexto = new EntradaTexto(muroNavegador[1],muroNavegador[4]);
+                     this.entrada.add(entradaTexto);
+                     
+                     int cont = 0;
+                     while(cont<Integer.parseInt(muroNavegador[2])){
+                       entradaTexto.meGusta();
+                       cont++;
+                     }
+                     
+                     cont = 0;
+                     muroNavegador[3] = muroNavegador[3].replace("-","/");
+                     muroNavegador[3] = muroNavegador[3].replace(":","/");
+                     
+                     String fechaYHora[] = muroNavegador[3].split("/");
+                     int[] elementosFechaHora = new int[5];
+                     while(cont < 5){
+                         elementosFechaHora[cont] = Integer.parseInt(fechaYHora[cont]);
+                         cont++;
+                     }
+                     LocalDateTime momentoLeido = LocalDateTime.of(elementosFechaHora[2], elementosFechaHora[1], elementosFechaHora[0], elementosFechaHora[3], elementosFechaHora[4]);
+                     entradaTexto.añadirMomentoPublicacion(momentoLeido);
+                     
+                     if(!muroNavegador[5].equals("Sin comentarios")){
+                         String comentarios[] = muroNavegador[5].split("%");
+                         
+                         cont = 0;
+                         while(cont<comentarios.length){
+                             entradaTexto.addComentarios(comentarios[cont]);
+                             cont++;
+                         }
+                     }
+                 }
+                 else if (muroNavegador[0].equals("EntradaUnionGrupo")) {
+                     EntradaUnionGrupo entradaUnionGrupo = new EntradaUnionGrupo(muroNavegador[1], muroNavegador[4]);
+                     this.entrada.add(entradaUnionGrupo);
+                     
+                     int cont = 0;
+                     while(cont<Integer.parseInt(muroNavegador[2])){
+                       entradaUnionGrupo.meGusta();
+                       cont++;
+                     }
+                     
+                     cont = 0;
+                     muroNavegador[3] = muroNavegador[3].replace("-","/");
+                     muroNavegador[3] = muroNavegador[3].replace(":","/");
+                     
+                     String fechaYHora[] = muroNavegador[3].split("/");
+                     int[] elementosFechaHora = new int[5];
+                     while(cont < 5){
+                         elementosFechaHora[cont] = Integer.parseInt(fechaYHora[cont]);
+                         cont++;
+                     } 
+                 }
+            }
+            sc.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+       this.mostrarMuroEnNavegado();
     }
 }
 

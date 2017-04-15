@@ -10,7 +10,7 @@ public abstract class EntradaComentarios extends Entrada
     }
 
     //añade al arraylist el comentario.
-    public void addCmentarios(String text)
+    public void addComentarios(String text)
     {
         comentarios.add(text);
     }

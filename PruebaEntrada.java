@@ -65,10 +65,10 @@ public class PruebaEntrada
         muro1.addEntrada(entradaT2);
         muro1.addEntrada(entradaF2);
         muro1.addEntrada(entradaU2);
-        entradaF1.addCmentarios("me gusta la foto¡");
+        entradaF1.addComentarios("me gusta la foto¡");
         entradaF2.getComentarios();
-        entradaF2.addCmentarios("esa foto es muy chula");
-        entradaF2.addCmentarios("no me gusta mucho...");
+        entradaF2.addComentarios("esa foto es muy chula");
+        entradaF2.addComentarios("no me gusta mucho...");
     }
 
     /**
