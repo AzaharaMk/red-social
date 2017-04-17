@@ -209,7 +209,7 @@ public class Muro
                          }
                      }
                  }
-                 else if (muroNavegador[0].equals("EntradaUnionGrupo")) {
+                 else if (muroNavegador[0].equals("EntradaUnionAGrupo")) {
                      EntradaUnionGrupo entradaUnionGrupo = new EntradaUnionGrupo(muroNavegador[1], muroNavegador[4]);
                      this.entrada.add(entradaUnionGrupo);
                      

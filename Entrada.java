@@ -60,14 +60,15 @@ public abstract class Entrada
         if(minutosQueHanPasadoDesdeCreacion > 0 )
         {
             if(diasQueHanPasadoDesdeCreacion>=1){
-                textoADevolver += diasQueHanPasadoDesdeCreacion+ " días";
+                textoADevolver += diasQueHanPasadoDesdeCreacion+ " días ";
             }
             else if (minutosQueHanPasadoDesdeCreacion > 1440 && minutosQueHanPasadoDesdeCreacion > 0){
-                textoADevolver += diasQueHanPasadoDesdeCreacion+ " minutos";
+                textoADevolver += diasQueHanPasadoDesdeCreacion+ " minutos ";
+                textoADevolver+= segundosResiduales + " segundos <br/>";
             }
         }
        
-        textoADevolver+= segundosResiduales + " segundos <br/>";
+        
         textoADevolver += getCantidadMeGusta()+ " me gusta.<br/>";
         
         return textoADevolver;
